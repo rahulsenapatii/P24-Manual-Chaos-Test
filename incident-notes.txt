@@ -1,0 +1,36 @@
+Incident Title: Nginx Service Recovery Test
+
+Date: 23-Nov-2026
+
+Environment:
+Ubuntu 24.04 EC2 Instance
+
+Summary:
+A controlled outage was simulated by manually stopping the Nginx service.
+
+Impact:
+The web service became unavailable while Nginx was stopped.
+
+Detection:
+Service status was checked using:
+sudo systemctl status nginx
+
+Observed State:
+Active: inactive (dead)
+
+Recovery Actions:
+1. Restarted the Nginx service:
+   sudo systemctl start nginx
+
+2. Verified service status:
+   sudo systemctl status nginx
+
+Verification:
+- Nginx returned to Active (running) state.
+- Website responded successfully using curl localhost.
+
+Root Cause:
+Intentional service stop as part of manual chaos testing.
+
+Outcome:
+Service was successfully recovered and normal operation restored.
